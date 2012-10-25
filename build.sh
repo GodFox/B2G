@@ -11,6 +11,10 @@ function configure_device() {
 
     # Figure out which pieces of information are important
     case $DEVICE in
+    	jordan)
+            script="cd device/motorola/$DEVICE && ./extract-files.sh"
+            important_files="device/motorola/$DEVICE/extract-files.sh"
+            ;;
         galaxys2)
             script="cd device/samsung/$DEVICE && ./extract-files.sh"
             important_files="device/samsung/$DEVICE/extract-files.sh"

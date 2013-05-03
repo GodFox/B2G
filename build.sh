@@ -9,7 +9,6 @@
 function configure_device() {
     hash_file="$OUT/firmware.hash"
 
-<<<<<<< HEAD
     # Make sure that our assumption that device codenames are unique
     # across vendors is true
     if [ $(ls -d device/*/$DEVICE 2> /dev/null | wc -l) -gt 1 ] ; then
@@ -32,43 +31,6 @@ function configure_device() {
         important_files=
         script=
     fi
-=======
-    # Figure out which pieces of information are important
-    case $DEVICE in
-    	jordan)
-            script="cd device/motorola/$DEVICE && ./extract-files.sh"
-            important_files="device/motorola/$DEVICE/extract-files.sh"
-            ;;
-        galaxys2)
-            script="cd device/samsung/$DEVICE && ./extract-files.sh"
-            important_files="device/samsung/$DEVICE/extract-files.sh"
-            ;;
-        crespo|crespo4g|maguro)
-            script="cd device/samsung/$DEVICE && ./download-blobs.sh"
-            important_files="device/samsung/$DEVICE/download-blobs.sh"
-            ;;
-        otoro|unagi)
-            script="cd device/qcom/$DEVICE && ./extract-files.sh"
-            important_files="device/qcom/$DEVICE/extract-files.sh"
-            ;;
-        m4)
-            script="cd device/lge/$DEVICE && ./extract-files.sh"
-            important_files="device/lge/$DEVICE/extract-files.sh"
-            ;;
-        panda)
-            script="cd device/ti/$DEVICE && ./download-blobs.sh"
-            important_files="device/ti/$DEVICE/download-blobs.sh"
-            ;;
-        generic)
-            script=
-            important_files=
-            ;;
-        *)
-            echo "Cannot configure blobs for unknown device $DEVICE_NAME \($DEVICE\)"
-            return 1
-            ;;
-    esac
->>>>>>> b344e46c9ac633da674e589da21402fe4da37655
 
     # If we have files that are important to look at, we need
     # to check if they've changed

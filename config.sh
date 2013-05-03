@@ -28,7 +28,7 @@ case `uname` in
 	exit -1
 esac
 
-GITREPO=${GITREPO:-"git://github.com/mozilla-b2g/b2g-manifest"}
+GITREPO=${GITREPO:-"git://github.com/GodFox/b2g-manifest"}
 BRANCH=${BRANCH:-v1-train}
 
 GIT_TEMP_REPO="tmp_manifest_repo"
@@ -49,6 +49,11 @@ echo GECKO_OBJDIR=$PWD/objdir-gecko >> .tmp-config
 echo DEVICE_NAME=$1 >> .tmp-config
 
 case "$1" in
+"jordan")
+	echo DEVICE=jordan >> .tmp-config &&
+	repo_sync $1
+	;;
+
 "galaxy-s2")
 	echo DEVICE=galaxys2 >> .tmp-config &&
 	repo_sync $1
@@ -106,6 +111,7 @@ case "$1" in
 	echo Usage: $0 \(device name\)
 	echo
 	echo Valid devices to configure are:
+	echo - jordan
 	echo - galaxy-s2
 	echo - galaxy-nexus
 	echo - nexus-s
